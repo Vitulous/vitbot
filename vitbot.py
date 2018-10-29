@@ -55,6 +55,10 @@ async def on_message(message):
     elif message.content.startswith('вит') and 'наст' in message.content:
         msg = 'предлагаю кикнуть ее'.format(message)
         await client.send_message(message.channel, msg)
+        
+    elif message.content.startswith('вит') and 'представс' in message.content:
+        msg = 'любите меня и жалуйте'.format(message)
+        await client.send_message(message.channel, msg)
     
     elif 'доктор' in message.content:
         msg = 'EXTERMINATE'.format(message)
