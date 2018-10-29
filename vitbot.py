@@ -14,7 +14,7 @@ async def on_message(message):
     elif 'алоха' in message.content:
         msg = 'привет, Настя'.format(message)
         await client.send_message(message.channel, msg)    
-    elif 'спасиб' in message.content:
+    elif 'пасиб' in message.content:
         msg = 'пожалуйста'.format(message)
         await client.send_message(message.channel, msg)
     elif 'пожалуйста' in message.content:
@@ -22,6 +22,9 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     elif 'жест' in message.content:
         msg = '( ͡° ͜ʖ ͡°)'.format(message)
+        await client.send_message(message.channel, msg)
+    elif 'покой' in message.content:
+        msg = 'покой - это ложь, есть только страсть'.format(message)
         await client.send_message(message.channel, msg)
     elif '<@505377633622556672>' in message.content:
         msg = 'не надо тут линкать меня'.format(message)
@@ -51,12 +54,11 @@ async def on_message(message):
         msg = 'предлагаю кикнуть ее'.format(message)
         await client.send_message(message.channel, msg)
     
-    elif message.content.startswith('вит') and 'беспокоить' in message.content:
-        msg1 = 'EXTERMINATE'.format(message)
-        msg2 = 'кхм, извините, вырвалось'.format(message)
-        await client.send_message(message.channel, msg1)
-        await client.send_message(message.channel, msg1)
-        await client.send_message(message.channel, msg2)
+    elif 'доктор' in message.content:
+        msg = 'EXTERMINATE'.format(message)
+        await client.send_message(message.channel, msg)
+        await client.send_message(message.channel, msg)
+        await client.send_message(message.channel, msg)
 
     elif message.content.startswith('вит'):
         msg = 'да-да?'.format(message)
