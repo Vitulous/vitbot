@@ -32,7 +32,9 @@ async def on_message(message):
     elif '<@314363965125820417>' in message.content:
         msg = 'не беспокойте Вита без причины'.format(message)
         await client.send_message(message.channel, msg)
-
+    elif message.content.startswith('вит') and 'сарказм' in message.content:
+        msg = 'даааа, конеееечно, я полностью точно согласен'.format(message)
+        await client.send_message(message.channel, msg)
     elif message.content.startswith('вит') and 'роль' in message.content:
         roles = ('танк', 'хил', 'дпс')
         msg = random.choice(roles).format(message)
