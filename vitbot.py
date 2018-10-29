@@ -8,7 +8,9 @@ async def on_message(message):
     if message.author == client.user:
         return
     message.content = message.content.lower()
-    if 'привет' in message.content:
+    if len(message.attachments) > 0 or 'http' in message.content:
+        await client.add_reaction(message, '\U0001F44C')
+    elif 'привет' in message.content:
         msg = 'хей!'.format(message)
         await client.send_message(message.channel, msg)
     elif 'алоха' in message.content:
