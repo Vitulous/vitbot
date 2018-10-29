@@ -65,6 +65,11 @@ async def on_message(message):
     elif message.content.startswith('вит') and 'пят' in message.content:
         await client.add_reaction(message, '\U0000270B')
         
+    pic_ext = ['.jpg','.png','.jpeg']
+    for ext in pic_ext:
+        if message.content.endswith(ext):
+            await client.add_reaction(message, '\U0001F44C')
+        
     elif message.content.startswith('вит'):
         msg = 'я вместо него'.format(message)
         await client.send_message(message.channel, msg)
