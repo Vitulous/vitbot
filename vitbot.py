@@ -61,7 +61,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
 
     elif message.content.startswith('вит'):
-        msg = 'да-да?'.format(message)
+        msg = 'я вместо него'.format(message)
         await client.send_message(message.channel, msg)
     
 @client.event
