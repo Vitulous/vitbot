@@ -11,16 +11,17 @@ async def on_message(message):
     if len(message.attachments) > 0 or 'http' in message.content:
         await client.add_reaction(message, '\U0001F44C')
     elif 'привет' in message.content:
-        msg = 'хей!'.format(message)
+        helloes = ('хей!', 'привет-привет', 'доброго времени суток', 'привет', 'привет', 'привет')
+        msg = random.choice(helloes).format(message)
         await client.send_message(message.channel, msg)
     elif 'алоха' in message.content:
-        msg = 'привет, Настя'.format(message)
+        msg = 'привет, Настя :р'.format(message)
         await client.send_message(message.channel, msg)    
     elif 'пасиб' in message.content:
         msg = 'пожалуйста'.format(message)
         await client.send_message(message.channel, msg)
-    elif 'пожалуйста' in message.content:
-        msg = 'спасибо'.format(message)
+    elif 'музыка жизни' in message.content:
+        msg = 'Тишина, брат мой.'.format(message)
         await client.send_message(message.channel, msg)
     elif 'жест' in message.content:
         msg = '( ͡° ͜ʖ ͡°)'.format(message)
@@ -74,7 +75,8 @@ async def on_message(message):
         await client.add_reaction(message, '\U0000270B')
                 
     elif message.content.startswith('вит'):
-        msg = 'я вместо него'.format(message)
+        helloes = ('да-да?', 'я вместо него', 'бип-буп', 'слушаю', 'я тут', 'что?')
+        msg = random.choice(helloes).format(message)
         await client.send_message(message.channel, msg)
         
     
