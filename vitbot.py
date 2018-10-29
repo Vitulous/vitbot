@@ -65,6 +65,9 @@ async def on_message(message):
     elif message.content.startswith('вит'):
         msg = 'я вместо него'.format(message)
         await client.send_message(message.channel, msg)
+        
+    elif message.content.startswith('вит') and 'пят' in message.content:
+        await bot.add_reaction(message, 'u270B')
     
 @client.event
 async def on_ready():
