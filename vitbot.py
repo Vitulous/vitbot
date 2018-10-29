@@ -1,12 +1,6 @@
 import discord
 import random
-
-if __name__ == '__main__':
-    import config
-    client.run(config.token)
-
 client = discord.Client()
-
 @client.event
 async def on_message(message):
     # we do not want the bot to reply to itself
@@ -74,4 +68,4 @@ async def on_ready():
     print(client.user.id)
     print('------')
 
-client.run(TOKEN)
+client.run(os.getenv('TOKEN'))
