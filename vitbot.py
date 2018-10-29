@@ -68,9 +68,6 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
         await client.send_message(message.channel, msg)
         
-    if message.attachments[0] in message.content:
-        await client.add_reaction(message, '\U0001F44B')
-        
     elif message.content.startswith('вит') and 'пят' in message.content:
         await client.add_reaction(message, '\U0000270B')
                 
