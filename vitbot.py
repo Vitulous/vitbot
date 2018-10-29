@@ -1,5 +1,6 @@
 import discord
 import random
+import os
 client = discord.Client()
 @client.event
 async def on_message(message):
