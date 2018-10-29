@@ -1,7 +1,9 @@
 import discord
 import random
 
-TOKEN = 'NTA1Mzc3NjMzNjIyNTU2Njcy.DrSuBA.gz86I3xVDW3yRAG8dj7x6OVpcJw'
+if __name__ == '__main__':
+    import config
+    client.run(config.token)
 
 client = discord.Client()
 
