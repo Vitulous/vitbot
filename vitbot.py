@@ -74,7 +74,7 @@ async def on_message(message):
     elif message.content.startswith('вит') and 'пят' in message.content:
         await client.add_reaction(message, '\U0000270B')
                 
-    elif message.content.startswith('вит'):
+    elif message.content.startswith('вит') and 'здесь' in message.content:
         helloes = ('да-да?', 'я вместо него', 'бип-буп', 'слушаю', 'я тут', 'что?')
         msg = random.choice(helloes).format(message)
         await client.send_message(message.channel, msg)
