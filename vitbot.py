@@ -51,7 +51,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg1)
         await client.send_message(message.channel, msg2)
     elif 'nooo' in message.content:
-        await client.sendfile(channel, 'vader.jpg')
+        await client.sendfile(message.channel, 'vader.jpg')
     elif message.content.startswith('вит') and 'соглас' in message.content:
         msg = 'нет'.format(message)
         await client.send_message(message.channel, msg)        
