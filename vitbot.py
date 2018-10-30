@@ -42,7 +42,8 @@ async def on_message(message):
         roles = ('танк', 'хил', 'дпс')
         msg = random.choice(roles).format(message)
         await client.send_message(message.channel, msg)
-        
+    elif 'nooo' in message.content:
+        await client.send_file(message.channel, './vader.jpg')
     elif message.content.startswith('вит') and 'вероятн' in message.content:
         pos = str(random.randint(0,100))
         msg1 = 'считаю..'
