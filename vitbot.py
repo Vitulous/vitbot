@@ -70,7 +70,10 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
         await client.send_message(message.channel, msg)
         await client.send_message(message.channel, msg)
-        
+    elif message.content.startswith('вит') and 'дум' in message.content:
+        msg = '¯\_(ツ)_/¯'.format(message)
+        await client.send_message(message.channel, msg)  
+    
     elif message.content.startswith('вит') and 'пят' in message.content:
         await client.add_reaction(message, '\U0000270B')
                 
