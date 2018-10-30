@@ -23,7 +23,7 @@ async def on_message(message):
     elif 'музыка жизни' in message.content:
         msg = 'Тишина, брат мой.'.format(message)
         await client.send_message(message.channel, msg)
-    elif 'жест' in message.content:
+    elif message.content.startswith('вит') and 'жест' in message.content:
         msg = '( ͡° ͜ʖ ͡°)'.format(message)
         await client.send_message(message.channel, msg)
     elif 'покой' in message.content:
