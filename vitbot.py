@@ -47,8 +47,8 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     elif 'nooo' in message.content:
             await client.send_file(message.channel, './vader.jpg')
-    elif 'дай пят' in message.content:
-        await client.add_reaction(message, '\U0000270B')
+    # elif 'дай пят' in message.content:
+    #    await client.add_reaction(message, '\U0000270B')
     
     
 @client.event
