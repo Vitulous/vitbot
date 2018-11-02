@@ -44,9 +44,24 @@ async def on_message(message):
         elif 'здесь' in message.content:
             helloes = ('да-да?', 'я вместо него', 'бип-буп', 'слушаю', 'я тут', 'что?')
             msg = random.choice(helloes).format(message)
+        elif 'брось' in message.content:
+            nums = re.findall('\d+', message.content)
+            nums = list(map(int, nums))
+            if len(nums) > 2 or nums[0] > 100 or nums[0] == 0 or nums[1] == 0:
+                msg = 'такое сами считайте'
+            else:
+                res = 0
+                dice = []
+                for x in range(nums[0]):
+                    die = random.randint(1, nums[1])
+                    dice.append(die)
+                    res += die
+                msg = 'Итого: ' + str(res).format(message)
+                await client.send_message(message.channel, dice)
         await client.send_message(message.channel, msg)
     elif 'nooo' in message.content:
             await client.send_file(message.channel, './vader.jpg')
+        
     # elif 'дай пят' in message.content:
     #    await client.add_reaction(message, '\U0000270B')
     
