@@ -48,7 +48,7 @@ async def on_message(message):
         elif 'брось' in message.content:
             nums = re.findall('\d+', message.content)
             nums = list(map(int, nums))
-            if len(nums) > 2 or nums[0] > 100 or nums[0] <= 0 or nums[1] <= 0:
+            if len(nums) > 2 or nums[0] > 100 or nums[0] == 0 or nums[1] == 0:
                 msg = 'такое сами считайте'
             else:
                 res = 0
