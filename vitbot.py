@@ -4,9 +4,7 @@ import os
 import re
 import youtube_dl
 import asyncio
-
-if not discord.opus.is_loaded():
-    discord.opus.load_opus()
+import opuslib
 
 client = discord.Client()
 @client.event
