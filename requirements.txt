@@ -5,3 +5,4 @@ pynacl
 pip
 colorlog
 ffmpeg
+asyncio
