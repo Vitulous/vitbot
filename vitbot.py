@@ -2,9 +2,7 @@ import discord
 import random
 import os
 import re
-import youtube_dl
 import asyncio
-import opuslib
 
 client = discord.Client()
 @client.event
@@ -66,18 +64,6 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     elif 'nooo' in message.content:
             await client.send_file(message.channel, './vader.jpg')
-    elif message.content.startswith('test'):
-        author = message.author
-        channel = author.voice_channel
-        await client.join_voice_channel(channel)
-        url = 'https://www.youtube.com/watch?v=OJ2YFHRc4JU'
-        server = message.server
-        voice_client = client.voice_client_in(server)
-        player = await voice_client.create_ytdl_player(url)
-        player.start()
-        while not player.is_done():
-            await asyncio.sleep(1)
-        await voice_client.disconnect()
     # elif 'дай пят' in message.content:
     #    await client.add_reaction(message, '\U0000270B')
     
