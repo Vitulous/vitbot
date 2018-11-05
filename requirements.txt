@@ -10,3 +10,4 @@ colorlog
 aiohttp
 websockets
 chardet
+libffi
