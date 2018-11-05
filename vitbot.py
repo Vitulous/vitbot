@@ -5,7 +5,8 @@ import re
 import youtube_dl
 import asyncio
 
-discord.opus.load_opus
+if not discord.opus.is_loaded():
+    discord.opus.load_opus('opus')
 client = discord.Client()
 @client.event
 async def on_message(message):
