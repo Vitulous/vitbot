@@ -5,9 +5,17 @@ import re
 import asyncio
 
 client = discord.Client()
+full = 0
+async def eating():
+    await client.wait_until_ready()
+    global full
+    while not client.is_closed:
+        await asyncio.sleep(10)
+        if full > 0:
+            full -= 1
 @client.event
 async def on_message(message):
-    # we do not want the bot to reply to itself
+    global full
     if message.author == client.user:
         return
     message.content = message.content.lower()
@@ -61,33 +69,27 @@ async def on_message(message):
                     res += die
                 msg = 'Итого: ' + str(res).format(message)
                 await client.send_message(message.channel, dice)
+        elif 'голод' in message.content:
+            if full == 0:
+                msg = 'умираю с голоду'.format(message)
+            elif 0 < full <= 5:
+                msg = 'да'.format(message)
+            elif 5 < full < 10:
+                msg = 'ну такое, могу что-то перекусить'.format(message)
+            elif full == 10:
+                msg = 'нет'.format(message)
+        elif 'покушай' or 'ешь' in message.content:
+            if full < 10:
+                full += 1
+                msg = 'омномном'.format(message)
+                await client.add_reaction(message, '\U0001F374')
+            else:
+                msg = 'нет, спасибо, я не голодный'.format(message)
         await client.send_message(message.channel, msg)
     elif 'nooo' in message.content:
             await client.send_file(message.channel, './vader.jpg')
-    # elif 'дай пят' in message.content:
-    #    await client.add_reaction(message, '\U0000270B')
-    if message.content.startswith('test'):
-        file = open('stage.txt', 'r+')
-        stage = [int(x) for x in next(file).split()]
-        if 'try' in message.content:
-            if stage[0] == 0:
-                msg = 'nono'.format(message)
-            elif stage[0] == 1:
-                msg = 'ok, lets go'.format(message)
-            else:
-                msg = 'try again'.format(message)
-        elif 'advance' in message.content:
-            adv = stage[0] + 1
-            file.seek(0)
-            file.write('{}'.format(adv))
-            msg = ('your stg is advanced to ' + str(adv)).format(message)
-        elif 'reset' in message.content:
-            file.seek(0)
-            file.write('0')
-            msg = 'alright'.format(message)
-        await client.send_message(message.channel, msg)
-        file.truncate()
-        file.close()
+
+
 
     
 @client.event
