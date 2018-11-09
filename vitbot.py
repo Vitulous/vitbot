@@ -71,11 +71,11 @@ async def on_message(message):
         stage = [int(x) for x in next(file).split()]
         if 'try' in message.content:
             if stage[0] == 0:
-                msg = 'nono'
+                msg = 'nono'.format(message)
             elif stage[0] == 1:
-                msg = 'ok, lets go'
+                msg = 'ok, lets go'.format(message)
             else:
-                msg = 'try again'
+                msg = 'try again'.format(message)
         elif 'advance' in message.content:
             adv = stage[0] + 1
             file.seek(0)
@@ -83,6 +83,7 @@ async def on_message(message):
             msg = ('your stg is advanced to ' + str(adv)).format(message)
         elif 'reset' in message.content:
             file.write('0')
+            msg = 'alright'.format(message)
         await client.send_message(message.channel, msg)
         file.truncate()
         file.close()
