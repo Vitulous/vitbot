@@ -80,9 +80,11 @@ async def on_message(message):
             adv = stage[0] + 1
             file.seek(0)
             file.write('{}'.format(adv))
-            file.truncate()
-            msg = ('your stg is advanced to' + str(adv)).format(message)
+            msg = ('your stg is advanced to ' + str(adv)).format(message)
+        elif 'reset' in message.content:
+            file.write('0')
         await client.send_message(message.channel, msg)
+        file.truncate()
         file.close()
 
     
