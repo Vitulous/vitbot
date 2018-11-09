@@ -66,7 +66,25 @@ async def on_message(message):
             await client.send_file(message.channel, './vader.jpg')
     # elif 'дай пят' in message.content:
     #    await client.add_reaction(message, '\U0000270B')
-    
+    if message.content.startswith('test'):
+        file = open('stage.txt', 'r+')
+        stage = [int(x) for x in next(file).split()]
+        if 'try' in message.content:
+            if stage[0] == 0:
+                msg = 'nono'
+            elif stage[0] == 1:
+                msg = 'ok, lets go'
+            else:
+                msg = 'try again'
+        elif 'advance' in message.content:
+            adv = stage[0] + 1
+            file.seek(0)
+            file.write('{}'.format(adv))
+            file.truncate()
+            msg = ('your stg is advanced to' + str(adv)).format(message)
+        await client.send_message(message.channel, msg)
+        file.close()
+
     
 @client.event
 async def on_ready():
