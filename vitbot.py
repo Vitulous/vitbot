@@ -10,7 +10,7 @@ async def eating():
     await client.wait_until_ready()
     global full
     while not client.is_closed:
-        await asyncio.sleep(10)
+        await asyncio.sleep(720)
         if full > 0:
             full -= 1
 @client.event
@@ -71,20 +71,22 @@ async def on_message(message):
                 await client.send_message(message.channel, dice)
         elif 'голод' in message.content:
             if full == 0:
-                msg = 'умираю с голоду'.format(message)
+                rmsg = ('умираю с голоду', 'в моем желудке буквально нет ничего', 'словно это не вы меня голодом морите', 'еще как!', 'сейчас бы целую роболошадь сьел')
             elif 0 < full <= 5:
-                msg = 'да'.format(message)
+                rmsg = ('да, я бы поел', 'не отказался бы поесть', 'добавочки бы', 'в целом - да', 'а у вас еще что-то осталось?')
             elif 5 < full < 10:
-                msg = 'ну такое, могу что-то перекусить'.format(message)
+                rmsg = ('ну такое, в принципе, еще могу что-нибудь сьесть', 'не то чтобы хочется есть, но могу что-нибудь пожевать', 'могу попробовать вместить в себя еще десерт', 'не сильно, но поесть могу, если надо', 'только если у вас что-то вкусное')
             elif full == 10:
-                msg = 'нет'.format(message)
+                rmsg = ('нет', 'я заполнен по самый краешек', 'я сыт, спасибо', 'не-а', 'так наелся, что аж встать не могу')
+            msg = random.choice(rmsg).format(message)
         elif 'покушай' or 'ешь' in message.content:
             if full < 10:
                 full += 1
-                msg = 'омномном'.format(message)
+                rmsg = ('омномном', 'ммм, вкуснятина', 'не знаю что это, но я это сьем', 'спасибо, было вкусно', 'омномном')
                 await client.add_reaction(message, '\U0001F374')
             else:
-                msg = 'нет, спасибо, я не голодный'.format(message)
+                rmsg = ('нет, спасибо, я не голодный', 'в меня больше не влазит', 'не буду!', 'не хочу!', 'да не лезет!') 
+            msg = random.choice(rmsg).format(message)
         await client.send_message(message.channel, msg)
     elif 'nooo' in message.content:
             await client.send_file(message.channel, './vader.jpg')
