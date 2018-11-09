@@ -82,6 +82,7 @@ async def on_message(message):
             file.write('{}'.format(adv))
             msg = ('your stg is advanced to ' + str(adv)).format(message)
         elif 'reset' in message.content:
+            file.seek(0)
             file.write('0')
             msg = 'alright'.format(message)
         await client.send_message(message.channel, msg)
