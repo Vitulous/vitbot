@@ -87,8 +87,6 @@ async def on_message(message):
             else:
                 rmsg = ('нет, спасибо, я не голодный', 'в меня больше не влазит', 'не буду!', 'не хочу!', 'да не лезет!') 
             msg = random.choice(rmsg).format(message)
-        elif '' in message.content:
-            msg = 'что?'.format(message)
         await client.send_message(message.channel, msg)
     elif 'nooo' in message.content:
             await client.send_file(message.channel, './vader.jpg')
