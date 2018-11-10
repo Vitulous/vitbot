@@ -79,7 +79,7 @@ async def on_message(message):
             elif full == 10:
                 rmsg = ('нет', 'я заполнен по самый краешек', 'я сыт, спасибо', 'не-а', 'так наелся, что аж встать не могу')
             msg = random.choice(rmsg).format(message)
-        elif 'покушай' or 'ешь' in message.content:
+        elif 'ешь' in message.content:
             if full < 10:
                 full += 1
                 rmsg = ('омномном', 'ммм, вкуснятина', 'не знаю что это, но я это сьем', 'спасибо, было вкусно', 'омномном')
