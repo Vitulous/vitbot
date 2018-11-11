@@ -83,7 +83,7 @@ async def on_message(message):
             if full < 10:
                 full += 1
                 rmsg = ('омномном', 'ммм, вкуснятина', 'не знаю что это, но я это сьем', 'спасибо, было вкусно', 'омномном')
-                await client.add_reaction(message, '\U0001F37D')
+                await client.add_reaction(message, '\U0001F374')
             else:
                 rmsg = ('нет, спасибо, я не голодный', 'в меня больше не влазит', 'не буду!', 'не хочу!', 'да не лезет!') 
             msg = random.choice(rmsg).format(message)
