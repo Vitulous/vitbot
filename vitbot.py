@@ -5,7 +5,7 @@ import re
 import asyncio
 
 client = discord.Client()
-full = 1
+full = 0
 hunger = 0
 async def eating():
     await client.wait_until_ready()
@@ -21,7 +21,7 @@ async def eating():
         elif full == 0:
             hunger += 1
             rmsg = ('я хочу есть', 'покормите меня', 'я очень голоден', 'я умираю с голоду!')
-            msg = random.choice(rmsg).format(message)
+            msg = random.choice(rmsg)
             await client.send_message(discord.Object(id='379565688614027276'), msg)
 @client.event
 async def on_message(message):
