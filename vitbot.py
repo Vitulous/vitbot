@@ -5,17 +5,28 @@ import re
 import asyncio
 
 client = discord.Client()
-full = 0
+full = 1
+hunger = 0
 async def eating():
     await client.wait_until_ready()
     global full
+    global hunger
     while not client.is_closed:
         await asyncio.sleep(720)
+        if hunger == 5:
+            await client.send_message(discord.Object(id='379565688614027276'), '/умер от голода/')
+            await client.logout()
         if full > 0:
             full -= 1
+        elif full == 0:
+            hunger += 1
+            rmsg = ('я хочу есть', 'покормите меня', 'я очень голоден', 'я умираю с голоду!')
+            msg = random.choice(rmsg).format(message)
+            await client.send_message(discord.Object(id='379565688614027276'), msg)
 @client.event
 async def on_message(message):
     global full
+    global hunger
     if message.author == client.user:
         return
     message.content = message.content.lower()
@@ -82,6 +93,7 @@ async def on_message(message):
         elif 'ешь' in message.content:
             if full < 10:
                 full += 1
+                hunger = 0
                 rmsg = ('омномном', 'ммм, вкуснятина', 'не знаю что это, но я это сьем', 'спасибо, было вкусно', 'омномном')
                 await client.add_reaction(message, '\U0001F374')
             else:
