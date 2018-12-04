@@ -5,30 +5,34 @@ import re
 import asyncio
 
 client = discord.Client()
-full = 2
-#hunger = 0
+'''full = 2
+hunger = 0
 async def eating():
     await client.wait_until_ready()
     global full
     global hunger
     while not client.is_closed:
         await asyncio.sleep(720)
-        '''if hunger == 5:
+        if hunger == 5:
             await client.send_message(discord.Object(id='379565688614027276'), '/умер от голода/')
-            await client.logout()'''
+            await client.logout()
         if full > 0:
             full -= 1
-        '''elif full == 0:
+        elif full == 0:
             hunger += 1
             rmsg = ('я хочу есть', 'покормите меня', 'я очень голоден', 'я умираю с голоду!')
             msg = random.choice(rmsg)
             await client.send_message(discord.Object(id='379565688614027276'), msg)'''
 @client.event
 async def on_message(message):
-    global full
+    #global full
     #global hunger
     if message.author == client.user:
         return
+    if message.channel in client.privat_channels:
+        if message.author.id == '314363965125820417':
+            msg = message.content
+            await client.send_message(discord.Object(id='379565688614027276'), msg)
     message.content = message.content.lower()
     # if len(message.attachments) > 0 or 'http' in message.content:
     #    await client.add_reaction(message, '\U0001F44C')
@@ -70,7 +74,7 @@ async def on_message(message):
             nums = re.findall('\d+', message.content)
             nums = list(map(int, nums))
             if len(nums) > 2 or nums[0] > 100 or nums[0] == 0 or nums[1] == 0:
-                msg = 'такое сами считайте'
+                msg = 'такое сами бросайте'
             else:
                 res = 0
                 dice = []
@@ -80,7 +84,7 @@ async def on_message(message):
                     res += die
                 msg = 'Итого: ' + str(res).format(message)
                 await client.send_message(message.channel, dice)
-        elif 'голод' in message.content:
+        '''elif 'голод' in message.content:
             if full == 0:
                 rmsg = ('умираю с голоду', 'в моем желудке буквально нет ничего', 'словно это не вы меня голодом морите', 'еще как!', 'сейчас бы целую роболошадь сьел')
             elif 0 < full <= 5:
@@ -98,7 +102,7 @@ async def on_message(message):
                 await client.add_reaction(message, '\U0001F374')
             else:
                 rmsg = ('нет, спасибо, я не голодный', 'в меня больше не влазит', 'не буду!', 'не хочу!', 'да не лезет!') 
-            msg = random.choice(rmsg).format(message)
+            msg = random.choice(rmsg).format(message)'''
         await client.send_message(message.channel, msg)
     elif 'nooo' in message.content:
             await client.send_file(message.channel, './vader.jpg')
