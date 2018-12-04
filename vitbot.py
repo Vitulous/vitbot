@@ -29,7 +29,7 @@ async def on_message(message):
     #global hunger
     if message.author == client.user:
         return
-    if message.channel in client.privat_channels:
+    if message.channel in client.private_channels:
         if message.author.id == '314363965125820417':
             msg = message.content
             await client.send_message(discord.Object(id='379565688614027276'), msg)
