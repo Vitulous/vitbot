@@ -116,6 +116,6 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('------')
-client.loop.create_task(eating())
+#client.loop.create_task(eating())
 client.run(os.getenv('TOKEN'))
 
